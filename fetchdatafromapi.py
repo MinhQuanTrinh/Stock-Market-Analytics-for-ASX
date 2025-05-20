@@ -5,7 +5,7 @@ import json
 from datetime import date
 
 tickers = ['TMK.AX', 'DTR.AX', 'NDQ.AX', 'CBA.AX', 'RMD.AX']
-df = yf.download(tickers, period='1d', interval='1h', group_by='ticker')
+data = yf.download(tickers, period='1d', interval='1h', group_by='ticker')
 
 json_data = data.to_json()
 
