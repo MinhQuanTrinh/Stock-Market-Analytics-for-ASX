@@ -1,6 +1,6 @@
 # Stock-Market-Analytics-for-ASX
-This pipeline fetch stock data from Yahoo Finance API. The tickers are my current holding in the portfolio. 
-Tech stack: Airflow, Docker, Snowflake, dbt, AWS S3.
+This pipeline fetch stock data from Yahoo Finance API. The tickers are my current holding in the portfolio. The refined data is then used to produce a dashboard for visualization.
+Tech stack: Airflow, Docker, Snowflake, dbt, AWS S3, PowerBI.
 
 
 Step	    Component	                    Purpose
