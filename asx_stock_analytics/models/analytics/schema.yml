@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_stock_summary
+    description: "Daily ASX stock price summary for each symbol"
+    columns:
+      - name: symbol
+        tests: [not_null]
+      - name: trade_date
+        tests: [not_null]
+      - name: total_volume
+        description: "Total trading volume for the day"
+
+# This schema.yml file defines the structure of the fact table that summarizes stock prices by day.
+# schema file for testing.
+# It includes the following columns:
+# - symbol: The stock symbol for the company
+# - trade_date: The date of the trading day
+# - total_volume: The total trading volume for the day
+
