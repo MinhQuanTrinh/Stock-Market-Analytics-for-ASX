@@ -1,0 +1,14 @@
+asx_stock_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: YFHZRCK-LUB77131        # ⚠️ Do NOT include ".snowflakecomputing.com"
+      user: HARRYTRINH
+      password: Trinhhuuminhquan@1
+      role: ACCOUNTADMIN
+      warehouse: ASX_PROJECT
+      database: ASX_STOCK_DB
+      schema: RAWDATA
+      threads: 4
+      client_session_keep_alive: false

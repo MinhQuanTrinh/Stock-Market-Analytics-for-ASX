@@ -3,12 +3,26 @@
 
 {{ config(materialized='table') }}
 
+-- Fact table summarizing stock prices by day and enriched with company and calendar dimensions
+
 SELECT
-  symbol,
-  DATE_TRUNC('day', datetime) AS trade_date,
-  MAX(high) AS max_high,
-  MIN(low) AS min_low,
-  AVG(close) AS avg_close,
-  SUM(volume) AS total_volume
-FROM {{ ref('stg_asx_prices') }}
-GROUP BY symbol, DATE_TRUNC('day', datetime)
+  f.symbol,
+  DATE_TRUNC('day', f.datetime) AS trade_date,
+  MAX(f.high) AS max_high,
+  MIN(f.low) AS min_low,
+  AVG(f.close) AS avg_close,
+  SUM(f.volume) AS total_volume,
+  c.company_name,
+  c.sector,
+  d.weekday_name,
+  d.is_weekend
+FROM {{ ref('stg_asx_prices') }} f
+LEFT JOIN {{ ref('dim_company') }} c ON f.symbol = c.symbol
+LEFT JOIN {{ ref('dim_date') }} d ON DATE(f.datetime) = d.date
+GROUP BY
+  f.symbol,
+  DATE_TRUNC('day', f.datetime),
+  c.company_name,
+  c.sector,
+  d.weekday_name,
+  d.is_weekend
