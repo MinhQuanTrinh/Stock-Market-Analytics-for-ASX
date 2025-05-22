@@ -1,5 +1,8 @@
 # Stock-Market-Analytics-for-ASX
-Data Pipeline for ASX shares 
+This pipeline fetch stock data from Yahoo Finance API. The tickers are my current holding in the portfolio. 
+Tech stack: Airflow, Docker, Snowflake, dbt, AWS S3.
+
+
 Step	    Component	                    Purpose
 1	    rawdata.asx_prices_raw	    Raw JSON data loaded from S3
 2	    rawdata.asx_prices	        Flattened structured table(staging data)
